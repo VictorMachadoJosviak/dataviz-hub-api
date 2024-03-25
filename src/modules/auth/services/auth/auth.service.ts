@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User, UsersService } from '../../../users/services/user/users.service';
+import { UserResponseDto } from '../../../users/dtos/response/user-response.dto';
+import { UsersService } from '../../../users/services/user/users.service';
+import { jwtConstants } from '../../constants/jwt';
+import { AuthRequestDto } from '../../dtos/request/auth-request.dto';
+import { AuthResponseDto } from '../../dtos/response/auth-response.dto';
 
 @Injectable()
 export class AuthService {
@@ -9,19 +13,17 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(username);
-    if (user && user.password === pass) {
-      const { ...result } = user;
-      return result;
-    }
-    return null;
+  validateUser(username: string, pass: string): Promise<UserResponseDto> {
+    return this.usersService.findOne(username, pass);
   }
 
-  async login(user: User) {
-    const payload = { username: user.username, sub: user.userId };
+  async login(req: AuthRequestDto): Promise<AuthResponseDto> {
+    const user = await this.validateUser(req.username, req.password);
+    const payload = { username: user.username, sub: user.id };
+
     return {
-      access_token: this.jwtService.sign(payload),
+      accessToken: this.jwtService.sign(payload),
+      expiresIn: jwtConstants.expiresInSeconds,
     };
   }
 }
