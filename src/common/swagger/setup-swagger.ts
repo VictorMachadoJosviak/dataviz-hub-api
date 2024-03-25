@@ -6,6 +6,7 @@ export const setupSwagger = (app: INestApplication) => {
     .setTitle('DataViz API')
     .setDescription('Api para consumo de visualização de dados.')
     .setVersion('1.0')
+
     .addSecurity('bearer', {
       type: 'http',
       scheme: 'bearer',
