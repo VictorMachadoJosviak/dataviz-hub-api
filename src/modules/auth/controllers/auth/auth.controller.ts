@@ -29,6 +29,7 @@ export class AuthController {
   }
 
   @Get('profile')
+  @ApiResponse({ type: UserResponseDto })
   getProfile(@Request() req) {
     return req.user;
   }

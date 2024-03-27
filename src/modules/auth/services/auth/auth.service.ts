@@ -6,6 +6,10 @@ import {
   CREATE_USER_USE_CASE,
   ICreateUserUseCase,
 } from '../../../users/use-cases/create-user/create-user.use-case';
+import {
+  FIND_USER_USE_CASE,
+  IFindUserUseCase,
+} from '../../../users/use-cases/find-user/find-user.use-case';
 import { jwtConstants } from '../../constants/jwt';
 import { AuthRequestDto } from '../../dtos/request/auth-request.dto';
 import { AuthResponseDto } from '../../dtos/response/auth-response.dto';
@@ -22,6 +26,8 @@ export class AuthService {
     private jwtService: JwtService,
     @Inject(CREATE_USER_USE_CASE)
     private readonly createUserUseCase: ICreateUserUseCase,
+    @Inject(FIND_USER_USE_CASE)
+    private readonly findUserUseCase: IFindUserUseCase,
   ) {}
 
   validateUser(email: string, password: string): Promise<UserResponseDto> {
@@ -38,7 +44,11 @@ export class AuthService {
     };
   }
 
-  async register(req: CreateUserDto): Promise<UserResponseDto> {
+  register(req: CreateUserDto): Promise<UserResponseDto> {
     return this.createUserUseCase.execute(req);
+  }
+
+  getProfile(userId: string): Promise<UserResponseDto> {
+    return this.findUserUseCase.execute(userId);
   }
 }
