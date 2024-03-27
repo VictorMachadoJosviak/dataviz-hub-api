@@ -9,6 +9,7 @@ import { UsersModule } from './modules/users/users.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    DatabaseModule,
     AuthModule,
     UsersModule,
     DatabaseModule,
