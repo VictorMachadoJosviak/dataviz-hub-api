@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { FindUserUseCase } from './find-user.use-case';
+import { LoginUseCase } from './login.use-case';
 
 describe('UsersService', () => {
-  let service: FindUserUseCase;
+  let service: LoginUseCase;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [FindUserUseCase],
+      providers: [LoginUseCase],
     }).compile();
 
-    service = module.get<FindUserUseCase>(FindUserUseCase);
+    service = module.get<LoginUseCase>(LoginUseCase);
   });
 
   it('should be defined', () => {

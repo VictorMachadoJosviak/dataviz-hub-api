@@ -4,19 +4,19 @@ import { EntityRepository } from '@mikro-orm/core';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import * as bcrypt from 'bcrypt';
 import { IUseCase } from '../../../../common/use-case/use-case';
-import { AuthRequestDto } from '../../../auth/dtos/request/auth-request.dto';
-import { UserResponseDto } from '../../dtos/response/user-response.dto';
-import { User } from '../../entities/user.entity';
+import { UserResponseDto } from '../../../users/dtos/response/user-response.dto';
+import { User } from '../../../users/entities/user.entity';
+import { AuthRequestDto } from '../../dtos/request/auth-request.dto';
 
-export const FIND_USER_USE_CASE = 'IFindUserUseCase';
+export const LOGIN_USE_CASE = 'ILoginUseCase';
 
-export type IFindUserUseCase = IUseCase<
+export type ILoginUseCase = IUseCase<
   AuthRequestDto,
   UserResponseDto | undefined
 >;
 
 @Injectable()
-export class FindUserUseCase implements IFindUserUseCase {
+export class LoginUseCase implements ILoginUseCase {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: EntityRepository<User>,

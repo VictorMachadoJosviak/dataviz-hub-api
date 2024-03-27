@@ -6,26 +6,26 @@ import {
   CREATE_USER_USE_CASE,
   ICreateUserUseCase,
 } from '../../../users/use-cases/create-user/create-user.use-case';
-import {
-  FIND_USER_USE_CASE,
-  IFindUserUseCase,
-} from '../../../users/use-cases/find-user/find-user.use-case';
 import { jwtConstants } from '../../constants/jwt';
 import { AuthRequestDto } from '../../dtos/request/auth-request.dto';
 import { AuthResponseDto } from '../../dtos/response/auth-response.dto';
+import {
+  ILoginUseCase,
+  LOGIN_USE_CASE,
+} from '../../use-cases/login/login.use-case';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @Inject(FIND_USER_USE_CASE)
-    private authenticateUserUseCase: IFindUserUseCase,
+    @Inject(LOGIN_USE_CASE)
+    private loginUserUseCase: ILoginUseCase,
     private jwtService: JwtService,
     @Inject(CREATE_USER_USE_CASE)
     private readonly createUserUseCase: ICreateUserUseCase,
   ) {}
 
   validateUser(email: string, password: string): Promise<UserResponseDto> {
-    return this.authenticateUserUseCase.execute({ email, password });
+    return this.loginUserUseCase.execute({ email, password });
   }
 
   async login(req: AuthRequestDto): Promise<AuthResponseDto> {

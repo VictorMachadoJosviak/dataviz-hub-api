@@ -1,5 +1,5 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { Module } from '@nestjs/common';
+import { Module, Provider } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
@@ -11,6 +11,12 @@ import { JwtAuthGuard } from './guards/jwt-auth/jwt-auth.guard';
 import { AuthService } from './services/auth/auth.service';
 import { JwtStrategy } from './strategies/jwt/jwt.strategy';
 import { LocalStrategy } from './strategies/local/local.strategy';
+import { LOGIN_USE_CASE, LoginUseCase } from './use-cases/login/login.use-case';
+
+const LoginUseCaseProvider: Provider = {
+  provide: LOGIN_USE_CASE,
+  useClass: LoginUseCase,
+};
 
 @Module({
   imports: [
@@ -23,6 +29,7 @@ import { LocalStrategy } from './strategies/local/local.strategy';
     }),
   ],
   providers: [
+    LoginUseCaseProvider,
     AuthService,
     LocalStrategy,
     JwtStrategy,
