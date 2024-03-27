@@ -1,6 +1,7 @@
 import { defineConfig } from '@mikro-orm/core';
 import { Migrator } from '@mikro-orm/migrations';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
+import 'dotenv/config';
 import * as path from 'path';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -18,5 +19,6 @@ export default defineConfig({
   entitiesTs: ['./src/**/*.entity.ts'],
   migrations: {
     path: path.resolve(__dirname, './src/migrations'),
+    pathTs: './src/migrations',
   },
 });
