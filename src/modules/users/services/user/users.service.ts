@@ -13,7 +13,8 @@ export class UsersService {
 
     if (user && user.password === password) {
       return {
-        username: user.username,
+        email: user.username,
+        name: 'John Doe',
         id: user.id,
       };
     }

@@ -7,7 +7,7 @@ import { CreateUserDto } from '../../../src/modules/users/dtos/request/create-us
 
 export const registerUser = async (app: INestApplication) => {
   const user: CreateUserDto = {
-    username: 'test',
+    email: 'test',
     password: 'test',
   };
 
@@ -17,7 +17,7 @@ export const registerUser = async (app: INestApplication) => {
 
   expect(response.body).toStrictEqual({
     id: expect.any(String),
-    username: user.username,
+    username: user.email,
     password: user.password,
   });
 

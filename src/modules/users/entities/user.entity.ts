@@ -1,5 +1,6 @@
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
 import * as crypto from 'crypto';
+import { UserResponseDto } from '../dtos/response/user-response.dto';
 
 @Entity()
 export class User {
@@ -14,4 +15,12 @@ export class User {
 
   @Property()
   password: string;
+
+  toDto(): UserResponseDto {
+    return {
+      id: this.id,
+      name: this.name,
+      email: this.email,
+    };
+  }
 }

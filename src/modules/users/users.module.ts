@@ -1,4 +1,6 @@
+import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Module, Provider } from '@nestjs/common';
+import { User } from './entities/user.entity';
 import { UsersService } from './services/user/users.service';
 import {
   CREATE_USER_USE_CASE,
@@ -11,6 +13,7 @@ const CreateUserUseCaseProvider: Provider = {
 };
 
 @Module({
+  imports: [MikroOrmModule.forFeature([User])],
   providers: [UsersService, CreateUserUseCaseProvider],
   exports: [UsersService, CreateUserUseCaseProvider],
 })
