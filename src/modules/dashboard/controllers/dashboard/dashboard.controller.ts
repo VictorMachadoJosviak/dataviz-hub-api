@@ -7,11 +7,14 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { CreateDashboardDto } from '../../dto/request/create-dashboard.dto';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { CreateDashboardDto } from '../../dto/request/create-dashboard/create-dashboard.dto';
 import { UpdateDashboardDto } from '../../dto/request/update-dashboard.dto';
 import { DashboardService } from '../../services/dashboard.service';
 
-@Controller('dashboard')
+@ApiBearerAuth()
+@ApiTags('dashboards')
+@Controller('dashboards')
 export class DashboardController {
   constructor(private readonly dashboardService: DashboardService) {}
 

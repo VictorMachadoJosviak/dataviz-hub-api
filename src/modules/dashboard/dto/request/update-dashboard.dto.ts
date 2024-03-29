@@ -1,4 +1,4 @@
 import { PartialType } from '@nestjs/swagger';
-import { CreateDashboardDto } from './create-dashboard.dto';
+import { CreateDashboardDto } from './create-dashboard/create-dashboard.dto';
 
 export class UpdateDashboardDto extends PartialType(CreateDashboardDto) {}

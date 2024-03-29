@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateDashboardDto } from '../dto/request/create-dashboard.dto';
+import { CreateDashboardDto } from '../dto/request/create-dashboard/create-dashboard.dto';
 import { UpdateDashboardDto } from '../dto/request/update-dashboard.dto';
 
 @Injectable()
