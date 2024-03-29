@@ -7,7 +7,12 @@ export class DashboardResponsible {
   id: string = crypto.randomUUID();
 
   @Property()
-  userId: string;
+  name: string;
+
+  @Property({
+    nullable: true,
+  })
+  email: string;
 
   @ManyToOne(() => Dashboard)
   dashboard: Dashboard;

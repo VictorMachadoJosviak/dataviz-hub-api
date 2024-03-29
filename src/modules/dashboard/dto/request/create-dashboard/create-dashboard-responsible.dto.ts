@@ -1,8 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsUUID } from 'class-validator';
+import { IsEmail, IsString } from 'class-validator';
 
 export class CreateDashboardResponsibleDto {
   @ApiProperty()
-  @IsUUID()
-  userId: string;
+  @IsString()
+  name: string;
+
+  @ApiProperty()
+  @IsEmail()
+  email: string;
 }

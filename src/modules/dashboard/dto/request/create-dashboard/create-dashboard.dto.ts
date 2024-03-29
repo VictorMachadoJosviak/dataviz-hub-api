@@ -55,7 +55,7 @@ export class CreateDashboardDto {
   })
   @ValidateNested({ each: true })
   @Type(() => CreateDashboardOriginDto)
-  origin: CreateDashboardOriginDto[];
+  origins: CreateDashboardOriginDto[];
 
   @ApiProperty({
     type: () => CreateDashboardResponsibleDto,

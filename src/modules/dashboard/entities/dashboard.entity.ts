@@ -42,7 +42,7 @@ export class Dashboard {
   metrics = new Collection<DashboardMetric>(this);
 
   @OneToMany(() => DashboardOrigin, (origin) => origin.dashboard)
-  origin = new Collection<DashboardOrigin>(this);
+  origins = new Collection<DashboardOrigin>(this);
 
   @OneToMany(() => DashboardResponsible, (responsible) => responsible.dashboard)
   responsibles = new Collection<DashboardResponsible>(this);

@@ -36,12 +36,13 @@ export class CreateDashboardUseCase implements ICreateDashboardUseCase {
             polarity: metric.polarity,
           })),
           name: request.name,
-          origin: request.origin.map((origin) => ({
+          origins: request.origins.map((origin) => ({
             name: origin.name,
             description: origin.description,
           })),
           responsibles: request.responsibles.map((responsible) => ({
-            userId: responsible.userId,
+            name: responsible.name,
+            email: responsible.email,
           })),
           technology: request.technology,
           updateFrequency: request.updateFrequency,
