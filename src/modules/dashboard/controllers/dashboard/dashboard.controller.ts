@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseUUIDPipe,
   Patch,
   Post,
   Query,
@@ -17,7 +18,7 @@ import {
 import { ApiOkResponseCustom } from '../../../../common/decorators/api-ok-response-type';
 import { PageableQueryRequest } from '../../../../common/pagination/pagination';
 import { CreateDashboardDto } from '../../dto/request/create-dashboard/create-dashboard.dto';
-import { UpdateDashboardDto } from '../../dto/request/update-dashboard.dto';
+import { UpdateDashboardDto } from '../../dto/request/update-dashboard/update-dashboard.dto';
 import { DashboardDto } from '../../dto/response/dashboard/dashboard.dto';
 import { DashboardFrequencyUpdate } from '../../enums/dashboard-frequency-update.enum';
 import { DashboardPolarity } from '../../enums/dashboard-polarity.enum';
@@ -75,11 +76,37 @@ export class DashboardController {
   }
 
   @Patch(':id')
+  @ApiResponse({
+    type: DashboardDto,
+  })
+  @ApiOperation({
+    summary: 'Update existing dashboard',
+    description: `<h3>Available technologys (Enum)</h3>
+    <ul>
+      ${Object.values(DashboardTechnology)
+        .map((technology) => `<li>${technology}</li>`)
+        .join('')}
+    </ul>  
+    <h3>Available Polarities (Enum)</h3>
+    <ul>
+      ${Object.values(DashboardPolarity)
+        .map((polarity) => `<li>${polarity}</li>`)
+        .join('')}
+    </ul>   
+    <h3>Available update frequencies (Enum)</h3>
+    <ul>
+      ${Object.values(DashboardFrequencyUpdate)
+        .map((frequency) => `<li>${frequency}</li>`)
+        .join('')}
+    </ul>   
+  `,
+  })
   update(
-    @Param('id') id: string,
+    @Param('id', new ParseUUIDPipe())
+    id: string,
     @Body() updateDashboardDto: UpdateDashboardDto,
   ) {
-    return this.dashboardService.update(+id, updateDashboardDto);
+    return this.dashboardService.update(id, updateDashboardDto);
   }
 
   @Delete(':id')

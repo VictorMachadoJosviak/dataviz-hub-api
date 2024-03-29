@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { PageableQueryRequest } from '../../../common/pagination/pagination';
 import { CreateDashboardDto } from '../dto/request/create-dashboard/create-dashboard.dto';
-import { UpdateDashboardDto } from '../dto/request/update-dashboard.dto';
+import { UpdateDashboardDto } from '../dto/request/update-dashboard/update-dashboard.dto';
 import {
   CREATE_DASHBOARD_USE_CASE,
   ICreateDashboardUseCase,
@@ -14,6 +14,10 @@ import {
   IListDashboardsUseCase,
   LIST_DASHBOARD_USE_CASE,
 } from '../use-cases/list-dashboards/list-dashboard.use-case';
+import {
+  IUpdateDashboardUseCase,
+  UPDATE_DASHBOARD_USE_CASE,
+} from '../use-cases/update-dashboard/update-dashboard.use-case';
 
 @Injectable()
 export class DashboardService {
@@ -24,6 +28,8 @@ export class DashboardService {
     private readonly listDashboardUseCase: IListDashboardsUseCase,
     @Inject(GET_DASHBOARD_USE_CASE)
     private readonly getDashboardUseCase: IGetDashboardUseCase,
+    @Inject(UPDATE_DASHBOARD_USE_CASE)
+    private readonly updateDashboardUseCase: IUpdateDashboardUseCase,
   ) {}
 
   create(createDashboardDto: CreateDashboardDto) {
@@ -38,8 +44,8 @@ export class DashboardService {
     return this.getDashboardUseCase.execute(id);
   }
 
-  update(id: number, updateDashboardDto: UpdateDashboardDto) {
-    return `This action updates a #${id} dashboard`;
+  update(id: string, updateDashboardDto: UpdateDashboardDto) {
+    return this.updateDashboardUseCase.execute({ ...updateDashboardDto, id });
   }
 
   remove(id: number) {

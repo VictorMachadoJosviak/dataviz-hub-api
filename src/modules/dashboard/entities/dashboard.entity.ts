@@ -38,13 +38,21 @@ export class Dashboard {
   @Property()
   isResponsive: boolean;
 
-  @OneToMany(() => DashboardMetric, (metric) => metric.dashboard)
+  @OneToMany(() => DashboardMetric, (metric) => metric.dashboard, {
+    orphanRemoval: true,
+  })
   metrics = new Collection<DashboardMetric>(this);
 
-  @OneToMany(() => DashboardOrigin, (origin) => origin.dashboard)
+  @OneToMany(() => DashboardOrigin, (origin) => origin.dashboard, {
+    orphanRemoval: true,
+  })
   origins = new Collection<DashboardOrigin>(this);
 
-  @OneToMany(() => DashboardResponsible, (responsible) => responsible.dashboard)
+  @OneToMany(
+    () => DashboardResponsible,
+    (responsible) => responsible.dashboard,
+    { orphanRemoval: true },
+  )
   responsibles = new Collection<DashboardResponsible>(this);
 
   @ManyToOne(() => DashboardArea)
