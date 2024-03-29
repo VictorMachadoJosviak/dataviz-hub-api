@@ -3,20 +3,25 @@ import {
   Controller,
   Delete,
   Get,
-  HttpStatus,
   Param,
   Patch,
   Post,
   Query,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import {
-  PageableQueryRequest,
-  PageableQueryResponse,
-} from '../../../../common/pagination/pagination';
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { ApiOkResponseCustom } from '../../../../common/decorators/api-ok-response-type';
+import { PageableQueryRequest } from '../../../../common/pagination/pagination';
 import { CreateDashboardDto } from '../../dto/request/create-dashboard/create-dashboard.dto';
 import { UpdateDashboardDto } from '../../dto/request/update-dashboard.dto';
 import { DashboardDto } from '../../dto/response/dashboard/dashboard.dto';
+import { DashboardFrequencyUpdate } from '../../enums/dashboard-frequency-update.enum';
+import { DashboardPolarity } from '../../enums/dashboard-polarity.enum';
+import { DashboardTechnology } from '../../enums/dashboard-technology.enum';
 import { DashboardService } from '../../services/dashboard.service';
 
 @ApiBearerAuth()
@@ -26,26 +31,42 @@ export class DashboardController {
   constructor(private readonly dashboardService: DashboardService) {}
 
   @Post()
+  @ApiOperation({
+    summary: 'Create a new dashboard',
+    description: `<h3>Available technologys (Enum)</h3>
+    <ul>
+      ${Object.values(DashboardTechnology)
+        .map((technology) => `<li>${technology}</li>`)
+        .join('')}
+    </ul>  
+    <h3>Available Polarities (Enum)</h3>
+    <ul>
+      ${Object.values(DashboardPolarity)
+        .map((polarity) => `<li>${polarity}</li>`)
+        .join('')}
+    </ul>   
+    <h3>Available update frequencies (Enum)</h3>
+    <ul>
+      ${Object.values(DashboardFrequencyUpdate)
+        .map((frequency) => `<li>${frequency}</li>`)
+        .join('')}
+    </ul>   
+  `,
+  })
   create(@Body() createDashboardDto: CreateDashboardDto) {
     return this.dashboardService.create(createDashboardDto);
   }
 
   @Get()
-  @ApiResponse({
-    status: HttpStatus.OK,
-    description: 'List all dashboards',
-    type: PageableQueryResponse<DashboardDto>,
-  })
+  @ApiOkResponseCustom(DashboardDto)
   findAll(@Query() filters: PageableQueryRequest) {
     return this.dashboardService.findAll(filters);
   }
 
+  @Get(':id')
   @ApiResponse({
-    status: HttpStatus.OK,
-    description: 'List all dashboards',
     type: DashboardDto,
   })
-  @Get(':id')
   findOne(@Param('id') id: string) {
     return this.dashboardService.findOne(id);
   }
