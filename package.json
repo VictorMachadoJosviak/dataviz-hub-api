@@ -20,7 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migration:create": "npm run build && mikro-orm migration:create",
     "migration:up": "npm run build && mikro-orm migration:up",
-    "migration:down": "mikro-orm migration:down"
+    "migration:down": "mikro-orm migration:down",
+    "prepare": "chmod +x prepare.sh && ./prepare.sh"
   },
   "dependencies": {
     "@mikro-orm/core": "^6.1.12",
