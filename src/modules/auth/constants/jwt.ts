@@ -1,4 +1,6 @@
+import 'dotenv/config';
+
 export const jwtConstants = {
-  secret: 'jwt-secret',
+  secret: process.env.JWT_SECRET,
   expiresInSeconds: 3600,
 };
