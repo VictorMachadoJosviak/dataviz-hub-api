@@ -1,11 +1,20 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateDashboardDto } from '../dto/request/create-dashboard/create-dashboard.dto';
 import { UpdateDashboardDto } from '../dto/request/update-dashboard.dto';
+import {
+  CREATE_DASHBOARD_USE_CASE,
+  ICreateDashboardUseCase,
+} from '../use-cases/create-dashboard/create-dashboard.use-case';
 
 @Injectable()
 export class DashboardService {
+  constructor(
+    @Inject(CREATE_DASHBOARD_USE_CASE)
+    private readonly createDashboardUseCase: ICreateDashboardUseCase,
+  ) {}
+
   create(createDashboardDto: CreateDashboardDto) {
-    return 'This action adds a new dashboard';
+    return this.createDashboardUseCase.execute(createDashboardDto);
   }
 
   findAll() {
