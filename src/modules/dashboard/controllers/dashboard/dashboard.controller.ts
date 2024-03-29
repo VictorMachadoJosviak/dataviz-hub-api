@@ -53,6 +53,9 @@ export class DashboardController {
     </ul>   
   `,
   })
+  @ApiResponse({
+    type: DashboardDto,
+  })
   create(@Body() createDashboardDto: CreateDashboardDto) {
     return this.dashboardService.create(createDashboardDto);
   }
