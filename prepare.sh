@@ -1,8 +1,8 @@
 echo "Installing Nest JS CLI"
-npm i -g @nestjs/cli
+npm i @nestjs/cli
 
 echo "Installing Mikro ORM CLI"
-npm i -g @mikro-orm/cli
+npm i @mikro-orm/cli
 
 echo "Installing Mikro ORM Migrations CLI"
-npm i -g @mikro-orm/migrations
+npm i @mikro-orm/migrations
