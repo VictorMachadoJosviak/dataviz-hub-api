@@ -23,8 +23,8 @@ export class DashboardMetric {
   description: string;
 
   @Property()
-  createdAt: Date;
+  createdAt: Date = new Date();
 
   @Property()
-  updatedAt: Date;
+  updatedAt: Date = new Date();
 }

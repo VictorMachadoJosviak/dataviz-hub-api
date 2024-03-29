@@ -57,11 +57,13 @@ export class Dashboard {
   usabilityWarning: string;
 
   @Property()
-  createdAt: Date;
+  createdAt: Date = new Date();
 
   @Property()
-  updatedAt: Date;
+  updatedAt: Date = new Date();
 
-  @Property()
+  @Property({
+    default: false,
+  })
   deleted: boolean;
 }

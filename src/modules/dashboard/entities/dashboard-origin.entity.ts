@@ -16,8 +16,8 @@ export class DashboardOrigin {
   dashboard: Dashboard;
 
   @Property()
-  createdAt: Date;
+  createdAt: Date = new Date();
 
   @Property()
-  updatedAt: Date;
+  updatedAt: Date = new Date();
 }
