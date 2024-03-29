@@ -1,5 +1,5 @@
 echo "Installing Nest JS CLI"
-npm i @nestjs/cli
+npm i -g @nestjs/cli
 
 echo "Installing Mikro ORM CLI"
 npm i @mikro-orm/cli
