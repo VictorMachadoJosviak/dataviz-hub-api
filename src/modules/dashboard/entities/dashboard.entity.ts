@@ -24,7 +24,7 @@ export class Dashboard {
   name: string;
 
   @Enum(() => DashboardTechnology)
-  tecnology: DashboardTechnology;
+  technology: DashboardTechnology;
 
   @Property()
   description: string;

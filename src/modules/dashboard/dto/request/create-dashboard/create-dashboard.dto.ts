@@ -23,7 +23,7 @@ export class CreateDashboardDto {
     enum: DashboardTechnology,
   })
   @IsEnum(DashboardTechnology)
-  tecnology: DashboardTechnology;
+  technology: DashboardTechnology;
 
   @ApiProperty()
   @IsString()

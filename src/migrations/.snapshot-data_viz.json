@@ -63,8 +63,8 @@
           "nullable": false,
           "mappedType": "string"
         },
-        "tecnology": {
-          "name": "tecnology",
+        "technology": {
+          "name": "technology",
           "type": "text",
           "unsigned": false,
           "autoincrement": false,
