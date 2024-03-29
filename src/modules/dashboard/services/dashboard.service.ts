@@ -7,6 +7,10 @@ import {
   ICreateDashboardUseCase,
 } from '../use-cases/create-dashboard/create-dashboard.use-case';
 import {
+  GET_DASHBOARD_USE_CASE,
+  IGetDashboardUseCase,
+} from '../use-cases/get-dashboard/list-dashboard.use-case';
+import {
   IListDashboardsUseCase,
   LIST_DASHBOARD_USE_CASE,
 } from '../use-cases/list-dashboards/list-dashboard.use-case';
@@ -18,6 +22,8 @@ export class DashboardService {
     private readonly createDashboardUseCase: ICreateDashboardUseCase,
     @Inject(LIST_DASHBOARD_USE_CASE)
     private readonly listDashboardUseCase: IListDashboardsUseCase,
+    @Inject(GET_DASHBOARD_USE_CASE)
+    private readonly getDashboardUseCase: IGetDashboardUseCase,
   ) {}
 
   create(createDashboardDto: CreateDashboardDto) {
@@ -28,8 +34,8 @@ export class DashboardService {
     return this.listDashboardUseCase.execute(filters);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} dashboard`;
+  findOne(id: string) {
+    return this.getDashboardUseCase.execute(id);
   }
 
   update(id: number, updateDashboardDto: UpdateDashboardDto) {

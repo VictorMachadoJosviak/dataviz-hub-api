@@ -13,6 +13,10 @@ import {
   CreateDashboardUseCase,
 } from './use-cases/create-dashboard/create-dashboard.use-case';
 import {
+  GET_DASHBOARD_USE_CASE,
+  GetDashboardUseCase,
+} from './use-cases/get-dashboard/list-dashboard.use-case';
+import {
   LIST_DASHBOARD_USE_CASE,
   ListDashboardsUseCase,
 } from './use-cases/list-dashboards/list-dashboard.use-case';
@@ -25,6 +29,11 @@ const CreateDashboardUseCaseProvider: Provider = {
 const ListDashboardUseCaseProvider: Provider = {
   provide: LIST_DASHBOARD_USE_CASE,
   useClass: ListDashboardsUseCase,
+};
+
+const GetDashboardUseCaseProvider: Provider = {
+  provide: GET_DASHBOARD_USE_CASE,
+  useClass: GetDashboardUseCase,
 };
 
 @Module({
@@ -43,6 +52,7 @@ const ListDashboardUseCaseProvider: Provider = {
     DashboardService,
     CreateDashboardUseCaseProvider,
     ListDashboardUseCaseProvider,
+    GetDashboardUseCaseProvider,
   ],
 })
 export class DashboardModule {}

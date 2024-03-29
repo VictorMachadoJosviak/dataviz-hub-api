@@ -10,7 +10,10 @@ import {
   Query,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PageableQueryRequest } from '../../../../common/pagination/pagination';
+import {
+  PageableQueryRequest,
+  PageableQueryResponse,
+} from '../../../../common/pagination/pagination';
 import { CreateDashboardDto } from '../../dto/request/create-dashboard/create-dashboard.dto';
 import { UpdateDashboardDto } from '../../dto/request/update-dashboard.dto';
 import { DashboardDto } from '../../dto/response/dashboard/dashboard.dto';
@@ -31,15 +34,20 @@ export class DashboardController {
   @ApiResponse({
     status: HttpStatus.OK,
     description: 'List all dashboards',
-    type: DashboardDto,
+    type: PageableQueryResponse<DashboardDto>,
   })
   findAll(@Query() filters: PageableQueryRequest) {
     return this.dashboardService.findAll(filters);
   }
 
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'List all dashboards',
+    type: DashboardDto,
+  })
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.dashboardService.findOne(+id);
+    return this.dashboardService.findOne(id);
   }
 
   @Patch(':id')
