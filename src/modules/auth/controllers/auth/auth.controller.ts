@@ -7,7 +7,7 @@ import {
   Post,
   Request,
 } from '@nestjs/common';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from '../../../users/dtos/request/create-user.dto';
 import { UserResponseDto } from '../../../users/dtos/response/user-response.dto';
 import { Public } from '../../decorators/public/public';
@@ -29,9 +29,10 @@ export class AuthController {
   }
 
   @Get('profile')
+  @ApiBearerAuth()
   @ApiResponse({ type: UserResponseDto })
   getProfile(@Request() req) {
-    return req.user;
+    return this.authService.getProfile(req.user.id);
   }
 
   @Public()
