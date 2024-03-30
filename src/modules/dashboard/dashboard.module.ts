@@ -13,6 +13,10 @@ import {
   CreateDashboardUseCase,
 } from './use-cases/create-dashboard/create-dashboard.use-case';
 import {
+  DELETE_DASHBOARD_USE_CASE,
+  DeleteDashboardUseCase,
+} from './use-cases/delete-dashboard/delete-dashboard.use-case';
+import {
   GET_DASHBOARD_USE_CASE,
   GetDashboardUseCase,
 } from './use-cases/get-dashboard/list-dashboard.use-case';
@@ -45,6 +49,11 @@ const UpdateDashboardUseCaseProvider: Provider = {
   useClass: UpdateDashboardUseCase,
 };
 
+const DeleteDashboardUseCaseProvider: Provider = {
+  provide: DELETE_DASHBOARD_USE_CASE,
+  useClass: DeleteDashboardUseCase,
+};
+
 @Module({
   imports: [
     MikroOrmModule.forFeature([
@@ -63,6 +72,7 @@ const UpdateDashboardUseCaseProvider: Provider = {
     ListDashboardUseCaseProvider,
     GetDashboardUseCaseProvider,
     UpdateDashboardUseCaseProvider,
+    DeleteDashboardUseCaseProvider,
   ],
 })
 export class DashboardModule {}

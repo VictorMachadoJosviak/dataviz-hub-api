@@ -32,7 +32,7 @@ export class UpdateDashboardUseCase implements IUpdateDashboardUseCase {
         });
 
         if (!dashboard) {
-          throw new NotFoundException("Dashboard doesn't exist.");
+          throw new NotFoundException('Dashboard not found');
         }
 
         dashboard.name = request.name || dashboard.name;

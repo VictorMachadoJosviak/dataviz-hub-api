@@ -7,6 +7,10 @@ import {
   ICreateDashboardUseCase,
 } from '../use-cases/create-dashboard/create-dashboard.use-case';
 import {
+  DELETE_DASHBOARD_USE_CASE,
+  IDeleteDashboardUseCase,
+} from '../use-cases/delete-dashboard/delete-dashboard.use-case';
+import {
   GET_DASHBOARD_USE_CASE,
   IGetDashboardUseCase,
 } from '../use-cases/get-dashboard/list-dashboard.use-case';
@@ -30,6 +34,8 @@ export class DashboardService {
     private readonly getDashboardUseCase: IGetDashboardUseCase,
     @Inject(UPDATE_DASHBOARD_USE_CASE)
     private readonly updateDashboardUseCase: IUpdateDashboardUseCase,
+    @Inject(DELETE_DASHBOARD_USE_CASE)
+    private readonly deleteDashboardUseCase: IDeleteDashboardUseCase,
   ) {}
 
   create(createDashboardDto: CreateDashboardDto) {
@@ -48,7 +54,7 @@ export class DashboardService {
     return this.updateDashboardUseCase.execute({ ...updateDashboardDto, id });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} dashboard`;
+  remove(id: string) {
+    return this.deleteDashboardUseCase.execute(id);
   }
 }

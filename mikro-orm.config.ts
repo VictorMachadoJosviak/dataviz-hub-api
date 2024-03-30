@@ -17,6 +17,7 @@ export default defineConfig({
   driver: PostgreSqlDriver,
   entities: ['./dist/**/*.entity.js'],
   entitiesTs: ['./src/**/*.entity.ts'],
+  debug: process.env.NODE_ENV !== 'production',
   migrations: {
     path: path.resolve(__dirname, './src/migrations'),
     pathTs: './src/migrations',
