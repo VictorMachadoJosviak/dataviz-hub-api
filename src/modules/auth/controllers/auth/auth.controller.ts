@@ -7,7 +7,12 @@ import {
   Post,
   Request,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { CreateUserDto } from '../../../users/dtos/request/create-user.dto';
 import { UserResponseDto } from '../../../users/dtos/response/user-response.dto';
 import { Public } from '../../decorators/public/public';
@@ -23,6 +28,10 @@ export class AuthController {
   @Public()
   @HttpCode(HttpStatus.OK)
   @Post('login')
+  @ApiOperation({
+    summary: 'Login',
+    description: `property "expiresIn" seconds`,
+  })
   @ApiResponse({ type: AuthResponseDto })
   async login(@Body() user: AuthRequestDto) {
     return this.authService.login(user);
@@ -30,6 +39,9 @@ export class AuthController {
 
   @Get('profile')
   @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Get profile',
+  })
   @ApiResponse({ type: UserResponseDto })
   getProfile(@Request() req) {
     return this.authService.getProfile(req.user.id);
@@ -39,6 +51,9 @@ export class AuthController {
   @ApiResponse({ type: UserResponseDto, status: HttpStatus.CREATED })
   @HttpCode(HttpStatus.CREATED)
   @Post('register')
+  @ApiOperation({
+    summary: 'Create a new account',
+  })
   register(@Body() user: CreateUserDto) {
     return this.authService.register(user);
   }

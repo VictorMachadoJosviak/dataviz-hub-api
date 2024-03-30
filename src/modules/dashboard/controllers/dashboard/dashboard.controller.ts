@@ -64,12 +64,18 @@ export class DashboardController {
   }
 
   @Get()
+  @ApiOperation({
+    summary: 'Find all dashboards',
+  })
   @ApiOkResponseCustom(DashboardDto)
   findAll(@Query() filters: PageableQueryRequest) {
     return this.dashboardService.findAll(filters);
   }
 
   @Get(':id')
+  @ApiOperation({
+    summary: 'Find a dashboard by id',
+  })
   @ApiResponse({
     type: DashboardDto,
   })
@@ -112,6 +118,9 @@ export class DashboardController {
   }
 
   @Delete(':id')
+  @ApiOperation({
+    summary: 'Remove a dashboard by id',
+  })
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.dashboardService.remove(id);

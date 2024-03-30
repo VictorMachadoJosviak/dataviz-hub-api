@@ -32,6 +32,24 @@
 $ npm install
 ```
 
+## Docker
+```bash
+  # initialize database
+  $ docker-compose up -d
+```
+
+## Running Migrations
+```bash
+  # create a new migration
+  $ npm run migration:create  
+
+  # apply the migration into database
+  $ npm run migration:up  
+
+  # crollback migration
+  $ npm run migration:down  
+```
+
 ## Running the app
 
 ```bash
