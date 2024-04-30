@@ -70,6 +70,7 @@ export class ListDashboardsUseCase implements IListDashboardsUseCase {
           name: responsible.name,
           email: responsible.email,
         })),
+        campaign: dashboard.campaign,
         area: {
           id: dashboard.area.id,
           name: dashboard.area.name,

@@ -55,6 +55,11 @@ export class Dashboard {
   )
   responsibles = new Collection<DashboardResponsible>(this);
 
+  @Property({
+    nullable: true,
+  })
+  campaign: string;
+
   @ManyToOne(() => DashboardArea)
   area: DashboardArea;
 

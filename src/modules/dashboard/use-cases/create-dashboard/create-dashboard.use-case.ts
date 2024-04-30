@@ -48,6 +48,7 @@ export class CreateDashboardUseCase implements ICreateDashboardUseCase {
             name: responsible.name,
             email: responsible.email,
           })),
+          campaign: request.campaign,
           technology: request.technology,
           updateFrequency: request.updateFrequency,
           usabilityWarning: request.usabilityWarning,
@@ -85,6 +86,7 @@ export class CreateDashboardUseCase implements ICreateDashboardUseCase {
         name: responsible.name,
         email: responsible.email,
       })),
+      campaign: dashboard.campaign,
       area: {
         id: dashboard.area.id,
         name: dashboard.area.name,

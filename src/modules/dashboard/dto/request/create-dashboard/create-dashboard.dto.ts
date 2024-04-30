@@ -1,8 +1,9 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
   IsBoolean,
   IsEnum,
+  IsOptional,
   IsString,
   IsUrl,
   ValidateNested,
@@ -64,6 +65,11 @@ export class CreateDashboardDto {
   @ValidateNested({ each: true })
   @Type(() => CreateDashboardResponsibleDto)
   responsibles: CreateDashboardResponsibleDto[];
+
+  @ApiPropertyOptional()
+  @IsString()
+  @IsOptional()
+  campaign: string;
 
   @ApiProperty({
     type: () => CreateDashboardAreaDto,

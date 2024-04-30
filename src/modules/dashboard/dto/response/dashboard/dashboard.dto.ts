@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { DashboardFrequencyUpdate } from '../../../enums/dashboard-frequency-update.enum';
 import { DashboardTechnology } from '../../../enums/dashboard-technology.enum';
@@ -51,6 +51,9 @@ export class DashboardDto {
   })
   @Type(() => CreateDashboardResponsibleDto)
   responsibles: CreateDashboardResponsibleDto[];
+
+  @ApiPropertyOptional()
+  campaign?: string;
 
   @ApiProperty({
     type: () => DashboardAreaDto,

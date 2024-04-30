@@ -45,6 +45,7 @@ export class GetDashboardUseCase implements IGetDashboardUseCase {
           name: origin.name,
           description: origin.description,
         })),
+        campaign: dashboard.campaign,
         responsibles: dashboard.responsibles.map((responsible) => ({
           id: responsible.id,
           name: responsible.name,

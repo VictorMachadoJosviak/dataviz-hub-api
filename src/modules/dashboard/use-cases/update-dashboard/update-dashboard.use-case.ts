@@ -45,6 +45,7 @@ export class UpdateDashboardUseCase implements IUpdateDashboardUseCase {
           request.updateFrequency || dashboard.updateFrequency;
         dashboard.usabilityWarning =
           request.usabilityWarning || dashboard.usabilityWarning;
+        dashboard.campaign = request.campaign || dashboard.campaign;
 
         if (request.area) {
           dashboard.area.name = request.area.name || dashboard.area.name;
@@ -118,6 +119,7 @@ export class UpdateDashboardUseCase implements IUpdateDashboardUseCase {
         name: origin.name,
         description: origin.description,
       })),
+      campaign: dashboard.campaign,
       responsibles: dashboard.responsibles.map((responsible) => ({
         id: responsible.id,
         name: responsible.name,

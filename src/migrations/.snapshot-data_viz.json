@@ -114,6 +114,15 @@
           "nullable": false,
           "mappedType": "boolean"
         },
+        "campaign": {
+          "name": "campaign",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
         "area_id": {
           "name": "area_id",
           "type": "uuid",
