@@ -11,6 +11,7 @@ import * as crypto from 'crypto';
 import { DashboardFrequencyUpdate } from '../enums/dashboard-frequency-update.enum';
 import { DashboardTechnology } from '../enums/dashboard-technology.enum';
 import { DashboardArea } from './dashboard-area.entity';
+import { DashboardFeedback } from './dashboard-feedback';
 import { DashboardMetric } from './dashboard-metric.entity';
 import { DashboardOrigin } from './dashboard-origin.entity';
 import { DashboardResponsible } from './dashboard-responsibles.entity';
@@ -54,6 +55,11 @@ export class Dashboard {
     { orphanRemoval: true },
   )
   responsibles = new Collection<DashboardResponsible>(this);
+
+  @OneToMany(() => DashboardFeedback, (feedback) => feedback.dashboard, {
+    orphanRemoval: true,
+  })
+  feedbacks = new Collection<DashboardFeedback>(this);
 
   @Property({
     nullable: true,
