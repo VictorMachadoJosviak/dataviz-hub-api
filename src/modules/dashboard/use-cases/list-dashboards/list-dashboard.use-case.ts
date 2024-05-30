@@ -5,7 +5,7 @@ import {
   PageableQueryRequest,
   PageableQueryResponse,
   calculatePagination,
-} from '../../../../common/pagination/pagination';
+} from '../../../../common/pagination/pagination.dto';
 import { IUseCase } from '../../../../common/use-case/use-case';
 import { DashboardDto } from '../../dto/response/dashboard/dashboard.dto';
 import { Dashboard } from '../../entities/dashboard.entity';

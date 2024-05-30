@@ -18,7 +18,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { ApiOkResponseCustom } from '../../../../common/decorators/api-ok-response-type';
-import { PageableQueryRequest } from '../../../../common/pagination/pagination';
+import { PageableQueryRequest } from '../../../../common/pagination/pagination.dto';
 import { CreateDashboardDto } from '../../dto/request/create-dashboard/create-dashboard.dto';
 import { UpdateDashboardDto } from '../../dto/request/update-dashboard/update-dashboard.dto';
 import { DashboardDto } from '../../dto/response/dashboard/dashboard.dto';

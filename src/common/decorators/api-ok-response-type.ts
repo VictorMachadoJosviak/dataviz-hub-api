@@ -1,6 +1,6 @@
 import { Type, applyDecorators } from '@nestjs/common';
 import { ApiExtraModels, ApiOkResponse, getSchemaPath } from '@nestjs/swagger';
-import { PageableQueryResponse } from '../pagination/pagination';
+import { PageableQueryResponse } from '../pagination/pagination.dto';
 
 export const ApiOkResponseCustom = <GenericType extends Type<unknown>>(
   data: GenericType,

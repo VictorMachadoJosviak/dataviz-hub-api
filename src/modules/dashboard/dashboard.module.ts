@@ -4,7 +4,7 @@ import { User } from '../users/entities/user.entity';
 import { DashboardFeedbackController } from './controllers/dashboard-feedback/dashboard-feedback.controller';
 import { DashboardController } from './controllers/dashboard/dashboard.controller';
 import { DashboardArea } from './entities/dashboard-area.entity';
-import { DashboardFeedback } from './entities/dashboard-feedback';
+import { DashboardFeedback } from './entities/dashboard-feedback.entity';
 import { DashboardMetric } from './entities/dashboard-metric.entity';
 import { DashboardOrigin } from './entities/dashboard-origin.entity';
 import { DashboardResponsible } from './entities/dashboard-responsibles.entity';

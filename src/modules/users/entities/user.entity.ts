@@ -16,6 +16,10 @@ export class User {
   @Property()
   password: string;
 
+  constructor(partial?: Partial<User>) {
+    Object.assign(this, partial);
+  }
+
   toDto(): UserResponseDto {
     return {
       id: this.id,

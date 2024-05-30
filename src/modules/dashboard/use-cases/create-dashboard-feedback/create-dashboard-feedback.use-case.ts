@@ -4,7 +4,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { IUseCase } from '../../../../common/use-case/use-case';
 import { User } from '../../../users/entities/user.entity';
 import { CreateDashboardFeedbackDto } from '../../dto/request/create-dashboard-feedback/create-dashboard-feedback.dto';
-import { DashboardFeedback } from '../../entities/dashboard-feedback';
+import { DashboardFeedback } from '../../entities/dashboard-feedback.entity';
 import { Dashboard } from '../../entities/dashboard.entity';
 
 type CreateDashboard = {

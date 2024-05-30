@@ -85,7 +85,16 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "**/*.(t|j)s",
+      "!**/*.module.ts",
+      "!**/*.dto.ts",
+      "!**/*.entity.ts",
+      "!**/*.config.ts",
+      "!**/*.fixture.ts",
+      "!migrations/*.ts",      
+      "!main.ts",
+      "!common/swagger/setup-swagger.ts",
+      "!modules/auth/types/user.d.ts"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"

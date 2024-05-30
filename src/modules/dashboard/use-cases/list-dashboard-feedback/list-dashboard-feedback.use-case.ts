@@ -5,10 +5,10 @@ import {
   PageableQueryRequest,
   PageableQueryResponse,
   calculatePagination,
-} from '../../../../common/pagination/pagination';
+} from '../../../../common/pagination/pagination.dto';
 import { IUseCase } from '../../../../common/use-case/use-case';
 import { DashboardFeedbackResponseDto } from '../../dto/response/dashboard-feedback/dashboard-feedback.dto';
-import { DashboardFeedback } from '../../entities/dashboard-feedback';
+import { DashboardFeedback } from '../../entities/dashboard-feedback.entity';
 
 type ListDashboardFeedback = {
   dashboardId: string;

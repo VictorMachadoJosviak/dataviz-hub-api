@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { PageableQueryRequest } from '../../../common/pagination/pagination';
+import { PageableQueryRequest } from '../../../common/pagination/pagination.dto';
 import { CreateDashboardFeedbackDto } from '../dto/request/create-dashboard-feedback/create-dashboard-feedback.dto';
 import { CreateDashboardDto } from '../dto/request/create-dashboard/create-dashboard.dto';
 import { UpdateDashboardDto } from '../dto/request/update-dashboard/update-dashboard.dto';

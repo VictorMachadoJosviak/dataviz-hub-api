@@ -7,6 +7,7 @@ import { CreateUserDto } from '../../../src/modules/users/dtos/request/create-us
 
 export const registerUser = async (app: INestApplication) => {
   const user: CreateUserDto = {
+    name: 'test',
     email: 'test',
     password: 'test',
   };
